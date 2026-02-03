@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franco's House Cleaning — Professional Residential Cleaning in Dallas-Fort Worth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+   ═══════════════════════════════════════════ */
+:root {
+  --rosa: #C94277;
+  --rosa-light: #E8A0B8;
+  --rosa-glow: #ff5a9e;
+  --rosa-bg: #FFF5F8;
+  --verde: #7BC47E;
+  --verde-dark: #4A9E5C;
+  --verde-glow: #6fe876;
+  --blanco: #FFFFFF;
+  --gris-bg: #F9F5F3;
+  --gris-text: #5A5A5A;
+  --negro: #1A1A1A;
+  --negro-soft: #2D2D2D;
+  --gold: #D4A853;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-script: 'Dancing Script', cursive;
+  --max-width: 1240px;
+  --section-padding: clamp(60px, 10vw, 120px);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-card: 0 4px 32px rgba(201,66,119,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover: 0 12px 48px rgba(201,66,119,0.14), 0 2px 8px rgba(0,0,0,0.06);
+  --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--negro);
+  background: var(--blanco);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; font-family: inherit; }
+
+/* ═══════════════════════════════════════════
+   SCROLL ANIMATIONS (Intersection Observer)
+   ═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.22s; }
+.delay-3 { transition-delay: 0.34s; }
+.delay-4 { transition-delay: 0.46s; }
+.delay-5 { transition-delay: 0.58s; }
+.delay-6 { transition-delay: 0.7s; }
+
+/* ═══════════════════════════════════════════
+   GRAIN OVERLAY (Cinematic texture)
+   ═══════════════════════════════════════════ */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════ */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.header.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 1px 40px rgba(201,66,119,0.08);
+  padding: 10px 32px;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+.header-logo img {
+  height: 69px;
+  transition: var(--transition);
+}
+.header.scrolled .header-logo img {
+  height: 57px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.header-nav a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--negro);
+  transition: var(--transition);
+  position: relative;
+  padding: 4px 0;
+}
+.header.scrolled .header-nav a {
+  color: var(--negro);
+}
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: var(--rosa);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 2px;
+}
+.header-nav a:hover::after {
+  width: 100%;
+}
+.btn-header {
+  padding: 10px 24px;
+  background: var(--verde-dark);
+  color: white;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(74,158,92,0.3);
+}
+.btn-header:hover {
+  background: var(--verde);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(74,158,92,0.4);
+}
+
+/* Mobile menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 8px;
+}
+.hamburger span {
+  width: 26px; height: 2.5px;
+  background: var(--rosa);
+  border-radius: 4px;
+  transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, var(--rosa-bg) 0%, #fff 100%);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.mobile-menu.active { display: flex; opacity: 1; }
+.mobile-menu-logo {
+  margin-bottom: 20px;
+}
+.mobile-menu-logo img {
+  height: 80px;
+}
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--rosa);
+  font-weight: 600;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--rosa-light);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.mobile-menu.active a {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mobile-menu.active a:nth-child(2) { transition-delay: 0.1s; }
+.mobile-menu.active a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu.active a:nth-child(4) { transition-delay: 0.3s; }
+.mobile-menu.active a:nth-child(5) { transition-delay: 0.4s; }
+.mobile-menu a svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--rosa);
+  fill: none;
+  stroke-width: 2;
+}
+.mobile-menu a:hover {
+  color: var(--verde-dark);
+  border-bottom-color: var(--verde);
+}
+.mobile-menu a:hover svg {
+  stroke: var(--verde-dark);
+}
+
+@media (max-width: 900px) {
+  .header-nav { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ═══════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 120px;
+  overflow: hidden;
+  background: #000;
+}
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+.hero-particles {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.sparkle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: sparkleFloat linear infinite;
+  box-shadow: 0 0 6px rgba(255,255,255,0.5);
+}
+@keyframes sparkleFloat {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 860px;
+  padding: 0 24px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 28px;
+  animation: heroFadeUp 1s 0.2s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-badge .star { color: var(--gold); font-size: 1rem; }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: white;
+  line-height: 1.08;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  animation: heroFadeUp 1s 0.4s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--rosa-light);
+  display: inline-block;
+  position: relative;
+}
+.hero-title em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 0;
+  width: 100%; height: 6px;
+  background: var(--rosa);
+  opacity: 0.4;
+  border-radius: 4px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: rgba(255,255,255,0.85);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  animation: heroFadeUp 1s 0.6s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  animation: heroFadeUp 1s 0.8s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, var(--verde-dark), var(--verde));
+  color: white;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: var(--transition);
+  box-shadow: 0 8px 32px rgba(74,158,92,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.6s;
+}
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(74,158,92,0.45);
+}
+
+.btn-secondary-link {
+  color: var(--rosa-light);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-secondary-link:hover {
+  color: white;
+  gap: 10px;
+}
+
+.hero-trust {
+  margin-top: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  animation: heroFadeUp 1s 1s both cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+.hero-trust-item svg { width: 16px; height: 16px; fill: var(--verde); flex-shrink: 0; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: bounceDown 2s infinite;
+}
+.hero-scroll svg {
+  width: 28px; height: 28px;
+  stroke: rgba(255,255,255,0.5);
+  stroke-width: 2;
+  fill: none;
+}
+@keyframes bounceDown {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION UTILITIES
+   ═══════════════════════════════════════════ */
+.section {
+  padding: var(--section-padding) 24px;
+  position: relative;
+}
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rosa);
+  margin-bottom: 14px;
+  display: inline-block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--negro);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--rosa);
+}
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--gris-text);
+  max-width: 560px;
+  margin: 16px auto 0;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════
+   VALUE PROPOSITION (3 cards)
+   ═══════════════════════════════════════════ */
+.values-section {
+  background: var(--blanco);
+  position: relative;
+}
+.values-section::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--rosa-light));
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.value-card {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  text-align: center;
+  border: 1px solid rgba(201,66,119,0.08);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--rosa), var(--verde));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.value-card:hover::before { transform: scaleX(1); }
+.value-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-6px);
+}
+.value-icon {
+  width: 72px; height: 72px;
+  margin: 0 auto 24px;
+  background: var(--rosa-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-bounce);
+}
+.value-card:hover .value-icon {
+  background: var(--rosa);
+  transform: scale(1.1) rotate(-5deg);
+}
+.value-card:hover .value-icon svg { stroke: white; }
+.value-icon svg {
+  width: 32px; height: 32px;
+  stroke: var(--rosa);
+  stroke-width: 1.8;
+  fill: none;
+  transition: var(--transition);
+}
+.value-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--negro);
+}
+.value-card p {
+  font-size: 0.92rem;
+  color: var(--gris-text);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES SECTION
+   ═══════════════════════════════════════════ */
+.services-section {
+  background: var(--gris-bg);
+  position: relative;
+  overflow: hidden;
+}
+.services-section::after {
+  content: '';
+  position: absolute;
+  bottom: -200px; right: -200px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,66,119,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.service-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 340px;
+  cursor: pointer;
+  group: true;
+}
+.service-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-card:hover img { transform: scale(1.08); }
+.service-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, transparent 30%, rgba(26,26,26,0.85) 100%);
+  transition: var(--transition);
+}
+.service-card:hover .service-overlay {
+  background: linear-gradient(180deg, rgba(201,66,119,0.15) 0%, rgba(26,26,26,0.9) 100%);
+}
+.service-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px;
+  color: white;
+  transform: translateY(16px);
+  transition: var(--transition);
+}
+.service-card:hover .service-content { transform: translateY(0); }
+.service-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  background: rgba(201,66,119,0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.service-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.service-content p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s 0.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-card:hover .service-content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+.service-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--verde);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-card:hover .service-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+.service-link:hover { gap: 10px; }
+
+/* ═══════════════════════════════════════════
+   TESTIMONIALS
+   ═══════════════════════════════════════════ */
+.testimonials-section {
+  background: var(--blanco);
+  overflow: hidden;
+}
+.testimonials-track-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin: 0 -24px;
+  padding: 0 24px;
+}
+.testimonials-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.testimonial-card {
+  flex: 0 0 calc(33.333% - 16px);
+  min-width: 300px;
+  background: var(--blanco);
+  border: 1px solid rgba(201,66,119,0.08);
+  border-radius: var(--radius);
+  padding: 40px 32px 32px;
+  position: relative;
+  transition: var(--transition);
+}
+.testimonial-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+.testimonial-quote {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--rosa-light);
+  line-height: 1;
+  position: absolute;
+  top: 16px; left: 28px;
+  opacity: 0.5;
+}
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+.testimonial-stars svg {
+  width: 18px; height: 18px;
+  fill: var(--gold);
+}
+.testimonial-text {
+  font-size: 0.95rem;
+  color: var(--gris-text);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.testimonial-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--rosa-light);
+}
+.testimonial-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--negro);
+}
+.testimonial-location {
+  font-size: 0.78rem;
+  color: var(--gris-text);
+}
+
+.testimonials-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.testimonials-controls button {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--rosa-bg);
+  border: 1px solid rgba(201,66,119,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.testimonials-controls button:hover {
+  background: var(--rosa);
+}
+.testimonials-controls button:hover svg { stroke: white; }
+.testimonials-controls button svg {
+  width: 20px; height: 20px;
+  stroke: var(--rosa);
+  stroke-width: 2;
+  fill: none;
+}
+.testimonials-dots {
+  display: flex;
+  gap: 8px;
+}
+.testimonials-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--rosa-light);
+  opacity: 0.3;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.testimonials-dots span.active {
+  opacity: 1;
+  background: var(--rosa);
+  width: 28px;
+  border-radius: 8px;
+}
+
+/* Trust badges */
+.trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(201,66,119,0.08);
+  flex-wrap: wrap;
+}
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.45;
+  transition: var(--transition);
+  filter: grayscale(100%);
+}
+.trust-badge:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+.trust-badge svg {
+  width: 24px; height: 24px;
+}
+.trust-badge span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gris-text);
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════
+   HOW IT WORKS (3 Steps)
+   ═══════════════════════════════════════════ */
+.steps-section {
+  background: linear-gradient(180deg, var(--blanco) 0%, var(--rosa-bg) 100%);
+  position: relative;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 52px;
+  left: 16.666%;
+  right: 16.666%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rosa-light), var(--verde));
+  opacity: 0.3;
+}
+.step-card {
+  text-align: center;
+  position: relative;
+}
+.step-number {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  font-weight: 700;
+  color: var(--rosa);
+  opacity: 0.06;
+  position: absolute;
+  top: -20px; left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+  pointer-events: none;
+}
+.step-icon {
+  width: 104px; height: 104px;
+  margin: 0 auto 28px;
+  background: linear-gradient(135deg, var(--rosa), var(--rosa-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 32px rgba(201,66,119,0.2);
+  transition: var(--transition-bounce);
+}
+.step-card:nth-child(2) .step-icon {
+  background: linear-gradient(135deg, var(--verde-dark), var(--verde));
+  box-shadow: 0 8px 32px rgba(74,158,92,0.2);
+}
+.step-card:nth-child(3) .step-icon {
+  background: linear-gradient(135deg, var(--gold), #E8C874);
+  box-shadow: 0 8px 32px rgba(212,168,83,0.2);
+}
+.step-card:hover .step-icon {
+  transform: scale(1.1) rotate(-8deg);
+}
+.step-icon svg {
+  width: 40px; height: 40px;
+  stroke: white;
+  stroke-width: 1.8;
+  fill: none;
+}
+.step-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--negro);
+}
+.step-card p {
+  font-size: 0.9rem;
+  color: var(--gris-text);
+  line-height: 1.7;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.steps-cta {
+  text-align: center;
+  margin-top: 56px;
+}
+.btn-pulse {
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(74,158,92,0.35); }
+  50% { box-shadow: 0 8px 48px rgba(74,158,92,0.55), 0 0 0 12px rgba(74,158,92,0.08); }
+}
+
+/* ═══════════════════════════════════════════
+   GALLERY
+   ═══════════════════════════════════════════ */
+.gallery-section {
+  background: var(--blanco);
+  overflow: hidden;
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+.carousel-track-container {
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+.carousel-slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+}
+.carousel-slide-overlay span {
+  color: white;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Carousel Controls - Rosa y Verde */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rosa) 0%, var(--rosa-light) 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(201,66,119,0.4);
+  transition: var(--transition);
+  z-index: 10;
+}
+.carousel-btn:hover {
+  background: linear-gradient(135deg, var(--verde) 0%, var(--verde-dark) 100%);
+  box-shadow: 0 6px 25px rgba(123,196,126,0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+.carousel-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: white;
+  stroke-width: 2.5;
+  fill: none;
+}
+.carousel-btn-prev { left: 0; }
+.carousel-btn-next { right: 0; }
+
+/* Carousel Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--rosa-light);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+.carousel-dot::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: var(--transition);
+}
+.carousel-dot:hover {
+  background: var(--verde);
+  transform: scale(1.2);
+}
+.carousel-dot.active {
+  background: var(--rosa);
+  transform: scale(1.3);
+}
+.carousel-dot.active::before {
+  border-color: var(--verde);
+}
+
+/* Carousel Counter */
+.carousel-counter {
+  text-align: center;
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gris-text);
+}
+.carousel-counter .current {
+  color: var(--rosa);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.carousel-counter .total {
+  color: var(--verde-dark);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-container { padding: 0 50px; }
+  .carousel-btn { width: 40px; height: 40px; }
+  .carousel-btn svg { width: 20px; height: 20px; }
+  .carousel-slide img { height: 350px; }
+  .carousel-slide-overlay { padding: 20px; }
+  .carousel-slide-overlay span { font-size: 1.1rem; }
+}
+@media (max-width: 480px) {
+  .carousel-container { padding: 0 40px; }
+  .carousel-btn { width: 35px; height: 35px; }
+  .carousel-slide img { height: 280px; }
+}
+
+/* ═══════════════════════════════════════════
+   VIDEOS SECTION
+   ═══════════════════════════════════════════ */
+.videos-section {
+  background: linear-gradient(180deg, var(--rosa-bg) 0%, var(--blanco) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.videos-section::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(201,66,119,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+.video-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--negro);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  aspect-ratio: 9/16;
+}
+.video-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+.video-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition);
+}
+.video-item:hover .video-item-overlay {
+  opacity: 1;
+}
+.video-item-overlay span {
+  color: white;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .video-item {
+    aspect-ratio: 9/16;
+  }
+}
+@media (max-width: 480px) {
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   DFW SERVICE AREAS
+   ═══════════════════════════════════════════ */
+.service-areas-section {
+  background: linear-gradient(180deg, var(--gris-bg) 0%, var(--blanco) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.service-areas-section::before {
+  content: '';
+  position: absolute;
+  top: -150px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(123,196,126,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.area-col {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid rgba(201,66,119,0.06);
+  transition: var(--transition);
+}
+.area-col:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+.area-heading {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--negro);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.area-list {
+  list-style: none;
+}
+.area-list li {
+  font-size: 0.88rem;
+  color: var(--gris-text);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  transition: var(--transition);
+  padding-left: 0;
+}
+.area-list li:last-child { border-bottom: none; }
+.area-list li:hover {
+  color: var(--rosa);
+  padding-left: 6px;
+}
+.areas-note {
+  text-align: center;
+  margin-top: 36px;
+  font-size: 0.9rem;
+  color: var(--gris-text);
+}
+.areas-note a {
+  color: var(--rosa);
+  font-weight: 600;
+  border-bottom: 1px solid var(--rosa-light);
+  transition: var(--transition);
+}
+.areas-note a:hover {
+  color: var(--verde-dark);
+  border-color: var(--verde);
+}
+
+/* ═══════════════════════════════════════════
+   PRICING
+   ═══════════════════════════════════════════ */
+.pricing-section {
+  background: var(--gris-bg);
+  position: relative;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.pricing-card {
+  background: var(--blanco);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  border: 1px solid rgba(201,66,119,0.06);
+  transition: var(--transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.pricing-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-6px);
+}
+.pricing-card.featured {
+  border: 2px solid var(--rosa);
+  transform: scale(1.04);
+  z-index: 2;
+  box-shadow: 0 12px 48px rgba(201,66,119,0.12);
+}
+.pricing-card.featured:hover {
+  transform: scale(1.04) translateY(-6px);
+}
+.pricing-badge {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 20px;
+  background: linear-gradient(135deg, var(--rosa), var(--rosa-glow));
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.pricing-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 20px;
+  background: var(--rosa-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pricing-icon svg {
+  width: 26px; height: 26px;
+  stroke: var(--rosa);
+  stroke-width: 1.8;
+  fill: none;
+}
+.pricing-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--negro);
+  margin-bottom: 4px;
+}
+.pricing-price span { font-size: 1rem; font-weight: 400; color: var(--gris-text); }
+.pricing-freq {
+  font-size: 0.82rem;
+  color: var(--gris-text);
+  margin-bottom: 24px;
+}
+.pricing-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+.pricing-features li {
+  font-size: 0.88rem;
+  color: var(--gris-text);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.pricing-features li svg {
+  width: 18px; height: 18px;
+  stroke: var(--verde);
+  stroke-width: 2.5;
+  fill: none;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border: 2px solid var(--rosa);
+  color: var(--rosa);
+  border-radius: 50px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: var(--transition);
+  width: 100%;
+}
+.btn-outline:hover {
+  background: var(--rosa);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,66,119,0.25);
+}
+.btn-solid-rosa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--rosa), var(--rosa-glow));
+  color: white;
+  border-radius: 50px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: var(--transition);
+  width: 100%;
+  box-shadow: 0 6px 24px rgba(201,66,119,0.25);
+}
+.btn-solid-rosa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(201,66,119,0.35);
+}
+.pricing-note {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.85rem;
+  color: var(--gris-text);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══════════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════════ */
+.cta-section {
+  position: relative;
+  padding: var(--section-padding) 24px;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.cta-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(201,66,119,0.88) 0%, rgba(26,26,26,0.85) 100%);
+}
+.cta-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 680px;
+}
+.cta-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.cta-content p {
+  color: rgba(255,255,255,0.8);
+  font-size: 1.05rem;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.btn-cta-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 42px;
+  background: white;
+  color: var(--rosa);
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: var(--transition);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.btn-cta-white:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 44px rgba(0,0,0,0.25);
+  background: var(--verde);
+  color: white;
+}
+.cta-trust {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.cta-trust span {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer {
+  background: var(--negro);
+  padding: 64px 24px 32px;
+  color: rgba(255,255,255,0.6);
+}
+.footer-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-top: 16px;
+  max-width: 300px;
+}
+.footer-logo {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--rosa-light);
+}
+.footer h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 20px;
+}
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: 10px; }
+.footer ul a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  transition: var(--transition);
+}
+.footer ul a:hover { color: var(--rosa-light); }
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 0.88rem;
+}
+.footer-contact-item svg {
+  width: 18px; height: 18px;
+  stroke: var(--rosa-light);
+  stroke-width: 2;
+  fill: none;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.footer-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.footer-socials a {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.footer-socials a:hover {
+  background: var(--rosa);
+  transform: translateY(-3px);
+}
+.footer-socials a svg {
+  width: 18px; height: 18px;
+  fill: rgba(255,255,255,0.7);
+}
+.footer-socials a:hover svg { fill: white; }
+
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p {
+  font-size: 0.8rem;
+}
+.footer-bottom p span {
+  color: var(--rosa-light);
+  font-family: var(--font-script);
+}
+.footer-legal {
+  display: flex;
+  gap: 24px;
+}
+.footer-legal a {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  transition: var(--transition);
+}
+.footer-legal a:hover { color: var(--rosa-light); }
+
+/* ═══════════════════════════════════════════
+   FLOATING WHATSAPP
+   ═══════════════════════════════════════════ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 900;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  transition: var(--transition);
+  animation: whatsappPulse 2s infinite;
+}
+.whatsapp-float:hover {
+  transform: scale(1.12);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+}
+.whatsapp-float svg {
+  width: 30px; height: 30px;
+  fill: white;
+}
+.whatsapp-tooltip {
+  position: absolute;
+  right: 72px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--negro);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+.whatsapp-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: var(--negro);
+}
+@keyframes whatsappPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+  50% { box-shadow: 0 4px 20px rgba(37,211,102,0.35), 0 0 0 14px rgba(37,211,102,0.1); }
+}
+
+/* ═══════════════════════════════════════════
+   COUNTER ANIMATION
+   ═══════════════════════════════════════════ */
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  margin-top: 60px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(201,66,119,0.08);
+  flex-wrap: wrap;
+}
+.stat-item {
+  text-align: center;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--rosa);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--gris-text);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .areas-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .values-grid { grid-template-columns: 1fr; gap: 20px; }
+  .steps-grid { grid-template-columns: 1fr; gap: 40px; }
+  .steps-grid::before { display: none; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .pricing-card.featured { transform: scale(1); }
+  .pricing-card.featured:hover { transform: translateY(-6px); }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item:nth-child(1) { grid-row: span 1; }
+  .testimonial-card { flex: 0 0 calc(100% - 16px); }
+  .stats-row { gap: 32px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .areas-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .hero-trust { flex-direction: column; gap: 8px; }
+  .cta-trust { flex-direction: column; gap: 8px; }
+}
+
+/* ═══════════════════════════════════════════
+   SMOOTH CUSTOM CURSOR (desktop only)
+   ═══════════════════════════════════════════ */
+@media (pointer: fine) {
+  .cursor-glow {
+    position: fixed;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,66,119,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out, opacity 0.3s;
+    opacity: 0;
+  }
+  .cursor-glow.active { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="header" id="header">
+  <div class="header-logo">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wgARCAH0AfQDASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAMEBQIBBv/EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/9oADAMBAAIQAxAAAAL6oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVqWrXalkGRESgAAAAAAAAAAAAAAAAAAAAAAAAAAAAPB6cnufLnN7ntG2x2B4pF5z0AAAAAAAAAAAAAAAAAAAAAAAAHMR1zT9b0kcjHla14egeeYzXeYnnpl3PmJ2Po0Ut84AAAAAAAAAAAAAAAAAAAAAAHkM3plLkjcVj31gDznnCa7qd7M71dbpfPVxvovGvm96jnzp9Kq2rw9AAAAAAAAAAAAAAAAAAAAAABz76APIecJvru1qtxzDjmqCd7d35/Zs0Ktn1x+e07mW6azN0mAQAAAAAAAAAAAAAAAAAAAAADyr3jN8a+NoTrrC+cDDSp3pa1HRsthxK/WZxDe81r3yOZI+4qy32ddJAgAAAAjkkc9KFAAAAAAAAAAAAAZkckU7bAvEA8gkm8p1sTXYssnPNivzzs++e+nqABXxvoI26Ol8zdb2g4gAAeZmnVxmaU1QtAAAAAAAAAA8R5y3fOpT3oTMhmgnbaF4gPPQzdLN559vUdAgk7bvotAAAxs2/Qnr+hs0b18voQAAAAAAAAAAAAABx3lrX2KfjfN3L2U9DGZXsVp33BeAADN0sznmOTu3mJMjX3fTneuYc+1xxfZGnu91+a0UvbnTrdl9qb5x9VLXLN2LrN3Z7vNdbh5u12dZ440R22AAAAAAAAAwd3EnS73lb9fP/QVK0aznq88yrayJ6PqXy/TP0z5uRPofMOVnXzfGOcl6hbsydatBzzrU7mb01BqVGJQtweTcpBMXYblOzXydXG1rRsc9dLVzbnPDGhWj43rR9o3t3J0WXzzqcc2t69G6AAAAAAAAp3PD5W9PlT1fT9fNaV43p4pXOHiyIe+x56ADM08znmS9QnpRsQYmjnRWNdPO4JUgtRzZzXaEtlenpZMauPcsEvNLvViaWbmXOYb+76N6q0rXPHEtqjd3fRvQAAAAAAAAHlG+PmYvqaU74liWs6XZ8Ym/188Z+i8+eG95hem1DS5xyvZejzrpxP3fnKnNPJcxymnPEqQLfOHkdd8dgUAcdgGfV1/OWeZffOl9FoAAAAAAAAAADz0RRWhR8vFoe3i1O7BI5PSAUOoeXS5zD2zOh4OpqRbdnP0Gc6XmwsCItuKHktovUeV7KzRx+pfDIAAAAAAAAAAAAAAAAAAAFbqYVuLpaS6M6W4KVz0lJcLXg0BS4v8ApXTkpTWC0YL3i2AyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//2gAMAwEAAgADAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALABAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBEYQHSAAAAAAAAAAAAAAAAAAAAAAAADGCNAEPzwAAAAAAAAAAAAAAAAAAAAAAAGGOALZ4aM/QAAAAAAAAAAAAAAAAAAAAAAMAPQYO9GASAAAAAAAAAAAAAAAAAAAAAAAIDgAD3AD2GEBAAAAAAwgAAAAAAAAAAAAAPwADfOZyAAGBAAAAAYwAAAAAAAAAANgQLwAAFhDQAAAFlwAAAAAAAAAAAAAAAFLAAgAABtPRC33x8QNbBNwAAAAAAAAADiRwK+vm+wc0ZOjRTLU6kZ0gAAAAAAAABb/AGCGGAAB3GrxAGetuTkCg8AAAAAAAAADHNr5/wD/AJ9K/AEQJggAAADlQAAAAAAAAAAAEIbbDIALGYFQDYYfcRQAAAAAAAAAAAAAAAAAAAALQAMETgCTYGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACAAMAAAAQ88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888k8888888888888888888888888888888Cl088888888888888888888888888888044P8AK9PPPPPPPPPPPPPPPPPPPPPPPPHzFP8AwzoRHzzzzzzzzzzzzzzzzzzzzzzwqk/zWfLnP7zzzzzzzzzzzzzzzzzzzzzzyzzH0nDUtUrzzzzzzzzzzzzzzzzzzzzzzzEvzwKXwYuS6bzzzzwHTzzzzzzzzzzzzzwLzx9tjXTzzCnzzzyZXzzzzzzzzzzznbxfzyytvzzzzxXzzzzzzzzzzzzzzzxuWDz7zzyXdfzb1fDHl2bx7zzzzzzzzzw/RPxHPtITWkGPt414htn8xbzzzzzzzzweeV+PjzxJtKKXAeqdZu3zOXzzzzzzzzzyN6kww7h3MAwfPybzzzDxxfzzzzzzzzzzzzye95/HwoKsrMP+p9bPzzzzzzzzzzzzzzzzzzzzz45GP52/j8MLzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz/xAA0EQABAwMCAwYEBAcAAAAAAAABAAIDBBESECETIDEFIjAyQEEjM1GBNFCAsRQkYXGRofD/2gAIAQIBAT8A/QNf8id+SB3qrak62Xl9WSsdMk031PqCm8jdBMwuwvvyW5nOAFygb7jxx11e4MGRUtTJEMyzb+6b2kw7uBCkEeV4Td1+SyB5amN0tmDy+6a0NFh4ltffk7Q+SVQgOgF02JjTcDld6NvTT35O0fklU8DnU4s7/rqlnM7ciNBVyTSWiHdUNUJnFoHRPqi2cR2QrRxuHb7qWQRtLiopah/xidr9FU1AjGI8xTM43hjjcHRlVI+7x5R4ZTdSslfTtL5BVD+HChL6WbgnylVr8ISQqb4NNkPMV2a3F71WS/zO3spW4zRx/S37rtM/DA/qomBjA1VA41ViCnVADm57Edf8KOQyb22Tnfwch27pUfEecnbD6eH0V+btL5BVDvA1Vf4pn2/dVTOMRH91T0sgIzPdHRU7uDLIHJlDd4mcd1WDCdkh6KdhqrlnlH+ym1JeMWjvKamMT2ytF7dVE0yO4jhb6aVQ4jXvPtsFSOLoWk+JjpkslkslLRtlvkSoYuE0NVTTcXEg2cFFHicn9dC0E3I0c0O2KADdhyy0jnm2Xd6pgDAGjxr+Dfkvpf1F1dXV9L8l/wBJH//EADkRAAEDAgQCBQkHBQAAAAAAAAEAAgMEERITITEFEBQiMkBBFSAjMFFSYXGxMzVCgKHB8DRDUJHR/9oACAEDAQE/APyDRyMDHAt5DX/AUccTiSXeB8E9rR2TfkyN0hs0X70Gk7Lozuj4ra3RBG6BttypqZ9Q7C1RRQ0Udjoq7h4m9JFv9UQQbHvAcRsV0uTIw4tbovc7tG/Kko31DtNlLUQ8Pbls3U9Q+d2JxVLXyU+m7VLFDXtxRHrJ7HRnC4a96oqE1BxO7KqOINhGTTokk3K6HT5AfbrWXEKSGCIOj3THlhxNK6QyrGGbR3tUsTojhd3iip45DimdYLiDXZN4ndT4c82myANMVlXy07ogIrYuWIXtdNlOHA7UIgA6JrGv2Nj8f+qSF8faHnbanuDfu8/zx5k2FynyOaLkIVI8Qn4fwnreZS1hi6r9Wqr4eDHnU+3mysL7NCAtp6yKEyDFs32pxY3Rgv8AE8o/u4/zx8yo+zKp/swg0DYebw9pFM26qWhsrgPb3CnhM0gYFP6aYU7NGjRVrWwvyWbfXlF/QO8yo7BUbCY91C/GLnkJnPdZqZIHkhZ2GUNI0XluTMwsHVUj93FMdI7rKSXBp4ptwbE8myuPW/D6vhRGeLqtY+lqMwfNVLmVgzGdr2cqJmbR5ftuvIzvfT+FYdcwJ1CB/caq2IRM0cD8lTgGIaphML8JUzsLCoupDf2rg0AfUWkVa8Cpc5qfo9oVSerZNFgApevNYJ0guLoHFqj6F2uxTcR1Pqo3ljg4Jj4eIQ67qo4ZLFqzUJ2K/WTZHtFgUXuO551P2apmOcwBoU7C2Zocqqk9I2FhuVHRPjPptAFTymB7yN1kYnB5UzbPDk9udt4LMuLAap7CwhwQBccRHKVtwXFQuuwerildGcTSoOLtOkwQkpajxBT+F0zk7g0XgSvI0XvFHg8VtCU7gRcwlz9Vw7LoY8L3BcUyqiUSQ7qMva7GTqiS43KsN+RYSLkaK1uZ035PhLtL6JrcIsPXNle3YoVU/vldLn98o1Ert3n/AGiSd+TQzMjuddEI23DbalGFtz8h+y6Owm4218f5ZSNaCLKZ8glLW/K3wRha7ru+HjbwUcDCcP63+iymWtbW11lMxYXC9zb6IRM7JGtifr3bMdcO9izXAWWc+1lnPvdOcXLOfayErghO8LNd+yMzyb/G6ZOGs311/X4/lI//xABAEAABAwIDBAQLBwQBBQAAAAABAAIDBBESITEFE0FRECIycRQgIzAzNEJQYYGRQENSU3KhsRUkYpI1Y3ODkKD/2gAIAQEAAT8C/wDd8x+IvH4Tb39LM9ukJd3FUdQ8SS+Sebu+ijcXatLe/wB/UseAy/F9/Ec+0jG8/f8AUSW2lAPfYz6CLhSUTJPak/2UtEBWNiDjZwvdR0OD76X6pjcItcnv8SWvijmEevM8kCHC4zHvOodhgkPwVI7FTxn4eI+O9Yx3+J8Wvrr+Th04u6KKsdAcLs2fwo3tkbiYbj3gTYZp1RE3WRv1VfVxOp3tY+5PJbPqom0zWveA4c02RjtHA/PxiQBcqvrjJ1Iuz/PRDSyysJY3L+U4FpsRYqjqnU7ss28QoJWzMDmHL3eU6nhfrG36Kvo4o4C+NtiFRUMT4GvkBJOeqZRQN0jCaA0WGniPeGNu7RV1YZzhblH/AD0Uez72dP8A6oAAWCqqVlQOsLO5qppZKc5i7eap53wSYmn5KmqGVDLt15e8K4YqSUfBU7cMDB8PFmkbEzE82CrKt1Q7kzkoonyvwsCpKJkGZzfz8QgOFiFWbN1dB/qo3vgkuLhwVHVtqG8ncR7vIuLHTxZ52wMxOKqqh9Q+7tOAVJRvqM9Gc1BCyFmFg6KjaG5mczBeyg2jvCRgtYXX9WH5f7qjn8IixWt0VVKyo1ydzU1PLSSB30cFQ1gnFnZP95VdS2nZc68AppXzyXdqqLZ97Pn/ANUAAMunaAJq5MiqIHG/I9grCeRWx/Vfn0uAcLEKq2eQcdNkeSoqzEd3NlJ/PvCtq207eb+S8rVTc3H9lR0bIMzm/wAWuqZW1Tw15AVLUzOc+7yeqSvC5/zHLZcjpKfE83N/FqaVlQM8ncwopH05DKjNvB/Q42TXtdk1wv7rqpJGM8kwucnU1S9xLmElSQyw9sFoK2Kb7y58WroJZahz24bFU9BLG5xOHNpC/pc3NqoIHQQ4X214dMtTHEbE5qKZkvZPQQHCxzCiZu8gep/HRLCyXtNv8U6KphzgfvG/heo9otvhmaYymSNeLtII85LK2MXdkmOD2gjT7btv0Uf6lsTWTxyRxKDmnQg9MsT3VBGE5ldann+IQz8appmTts4Z81KyaikyJA4HgVSbRD7NmyPPh5uscZZwxvBQM3cYb9t236KP9S2J6STu8arkMceWpyQo8YvK84lVQiEix1URlz3ZdkhVTM1/cIV7uLAutUT96HjzxNmjLX6KaMxSlh1C2dWFpEcnZ4HzJVNT7tznvzd9qlq4o8ibu5DVMfPJ7Ajb/lqmgjU36Nt+ij/Uti+mf3eMR0bT7bFsvtPTmNdqAV4LF+BMjbGOq0DzO2m+VY7mLdGz5N7SsJ109wzStiZiebBbyetcRH1Iuap6WODs5nmdViF8N8+nbfoo/wBS2L6d/d5jafbYtmdp/nNryYqnCPZHRsgf2nz9wSPDGFztArv2hVcox+yYxsbAG5AKasMku5ptfxKCERNtqTqefTtv0UfetjesHu8xtP0jVSPezFu2YlNJI50eNmHrJsrHOwg5+JJI2Nt3FMq43utn0lwaLnRS1A8He+LrWUFNJU4n3sPxFS0UseHRwOVwqePdRNZy6J63CbRi6pqveOwvFj0TyiKPEvCJWWMreqeSabi46ZqlkRscz8FBUslNtD9l2zLZrYxxzK2OzDTYuLitrylkAa32jZbGA3zudvE236KPvWx/WT3eY2n6Rvctl/eKVoLbkXtmqP1lvSTYXKqJTLITw4KnoxYOk15KrkLpzY6KA4omE62W0fQfNbPzke3gWqpP3MQ6kfJbOecZYdOivlwR4Rq5UkO9kz7IUrQKqFrRbipX7uMu5IzmeSMOAtiUjA9hB0VC7qOYdWm3QU0byoseLlURtikiwZOv9l2qb1fyWyHh1Lb8JW0affwdXtNzCo5fB6gF2mhQIIuOnbfoo/1LZHrXy8xtP0je5bL+8+ScLtsonbqW/JQzNlHV6NoPww24uVGzHOBwGanfu4i5FVlU6CKJjNS3VAl2zmFxucSo3YDI7k1U7bUkjzqVQ+ss6K916g/BUTMEA+K4raBtTqO4OIezmmkOaCNCqb1uZEgDM26KlhhqMQ01CZglDX2zUs7I+0VBUb11g0gc/se2GWqAeBC2fUbiXPsnVA30VZRMn6w6r+ap5JaM7uoHk+DuSaQ4XGY6Nt+ij/UhksbvxH6oSScHP+qD5+DpEPC+G9QZXf8AU+qbDX/iI7yhBX/nBbQvjZfXCtnC7JbGx5prHjWUn5BV0DcJkGqoDaoHd0bTPlGt+F1sxvbcq128kbC35qpymcAtrelYP8VMN3SQR8bXKF9BxVSN3Rlo5WVB6y3oqM6h/emDqAdG0n5iP5rZzQ4vB5K76TIjFF/ChqGtlkeb5oNfVPBeMMY4c+ioiErMJTJHwlzQfgoaVo6z+u74/ZNowb+Dq9oZjooq4w9V+bP4UcjZG4mOuEQCLFMhEZvH1Ry4dE0LJhaQXCFHAPu2/RCCIaMb9FgaNAPG2l6Vvctl6SdFd6s5UHrLe5GVgeGlwxHgqu75nuGjclSTtiidfVUmR30hzcbBVPrD+9T0m/qGPJ6gGiqLzPke3styVDGXzA8Aq71dy2f6x8lK7AxzjwTg7J59rNMN2AqWQRsLijEX075Xdo5rZxtMfiFVSCOL4qkhDYhcC/TWSbuPLtHJVEO6jjPHiqB2KDuy+y7RovvIteI6IZnwuvGbKDagOUzbHmFFMyTsOB83tL0re5bM0epKqGPV4T6htTTS7u/VVB6yO5UDb1Ush0Zdb3wemdKRdz3Js9NIfRPxcgtzNUSse7ycbdGraEdpMXAp9Riha2PN7lTxbqIN6JG42Fp4pl6eoF+Ckk8KcGR9jiVNA2SLBpbRMklg6hYXJsclQ/FNk0cFYWspKWSOTFFmooHyPD6j6eI7ylcBwaLraZyYFsz0bu/7NV0DJruZ1XqaCSE+Ub0AkHI2UdbOzR9x8Uzar/bYD3IbUi4tcENo059u3yQrqc/etXhkH5rUa6n/ADWo7Qp/x/so9oQyPDG4rlS76aR2E4GtUtPPqev3JmVFUXy6NmyBspY/svyQvTVAvw/dEsdeOn9s3cVNRtmwBxOBvBRQsiFmNA6HAOFimQsZ2WgeJJGyTtgFMY1gs0WHmpnGCqx2uCFI908l7Z8AFTR7qID7OWg6i6m2dE/NvVPwUmzZh2bOCfBKztMd9PMAlpBGqlq5ZWYXOy/lQPnYfJY1L4ZUswllh9EzZkx7RaFFs+IPwufd3K6kbGI/KWwjmo2MZ2APMSSsjze4BRSsl7DgUHAuLQcx4zHNf2TfxHAO1zTY2t7LQPtjomO7TAe8J1DTn7sfJHZ1OfZP1X9Lg/y+q/pcH+f1X9Mg/wAvqhs+nHsfuhR040iahDGNGN+niXttV1/y1tNwNFJYhPnbDCzFxyAHFQ1YfJgc1zHcio5Q+WRgB6qE7d5K38Gq8PbqY37v8VlPUNiaDrfQDioaoSPwOY5j+R6KSNtU988oxC9mgp1LgqGSwWb+IfBQevVHyRrm3OGN5YPaGifURsi3l+qm1gxgSRvYDoSpqpsUmAgl1r5cVT1IlcWFpa4cCopoo6eR7GkNDjfvRrmg3LH4PxWyVRUNhAuCS7QBR1jXSNjLXNeeBHuqWFs20i14uMCrqOKKle9oNwtaunB0wLaP3BHa3gVL63U96YA6qrATlkEd/TxYXNbLB8OSkc59XEYQ3sXGJGOd00TpN2MJ4FFbK9XLOLXFTTNhLMV7uNgn3EtZbXCqbwnwdgY2LBZD+3pWNkaJHYuqAqs1BawzBjW4hkrX2r/40f8Akx+hD/jqj/uFVwH9Nf8ApCbnXRX/AC1UgeH0vPP3UIf7wy3yw2VXFvoHRg2up6feMZhNpGaFR00hla+oeDh0AUtNJvjJC8DFrcKGkwb3EcWPVeCz4N3vRutNM7Kalu1m7OFzNFHTyGYSTvDi3QDTolpXiUyU78DjqOBUNK7e72d+Nw05BNgtNK8nJ68FmYMEUoEfxGYT6PyLGxmzmZgqSlllHlJBcG4sMluT4Xvb+zhRh/uxLf2bLwQ+CyR4s3uup4d5Suiva4VQxpdEwOwygZFYHeHwY34353+Hv6eBk4GPgoKaOE3b2uZ/+Lv/xAAsEAEAAgEDAQcEAwEBAQAAAAABABEhMUFRYRAgcZGhsfAwUIHBQNHh8ZCg/9oACAEBAAE/If8A2+M7neQ/v795nQTcu6EG30b78saaw9O4O+39Pv8AkEwPr/z70tWxAEyPYbjdPDUvrP8AJ95qPECHp8ArPP2V9zODgQZUTRPufSFzqefbucHhep3NJlJ0H6mszsXaBIFyJ9wC5AG72MwEjVXimI4lYbs9F4d52gAZWIrJvT4x2YlgxcKXFsmkyVe5JbEX28CUlk1y9aR7FLdg+T3Jk7fXMEiHA7jZgGVi28toBaAt0Aj0eNv7QmABsTQoaHWfjMf3xBGFutH5zLh9S1PuHKF50pJ3VhA3ZVclpBJa7/8AYYePO45Ejsz3Gv1NnqIn6mDYdX7ebha2gaHcaUuksFR0dv8AY4f2kwpHPPYdh5b1xAvtnXxOp8ktt+lL2DY8B1hYuj/omH57c+H3LWy9DVl+L2BtMI41P7ypADg7a6Ys0OhB4Tpw/wAZgRWI317VIkdmXsQb/wAsfT7kr7gomE0ilfmQZi53uhsGgVjBCao2mOJ8Il3d3L3cd8GtOOM23x4hTAFop0JfoDbj7XUWOnBFqTeG28Vr/UTKOmr491DOpekamgtPM/68RMmz2rzngENcybdjkRNRi5p2C9g6iW2hPzMyfEHzn6VGE+WB+pY2jiKXa0f5vxOk9v3xaB4s9ERl9mW5ja68xoZy7RAE073gZBrMrxoexKIj7fioIl/SytaK6wSs1v8AzfidJ6B3rWbakrUYN0eoiMhwF9pjHfSHIHRm+1W3EFFd8ArRPG9PaK3a1tun0dGNYqEV1P5TPmbjKnMK/IQDKuU+j1g609noGejP3NIzqRfZ5sphPQ+iRu/Qf97NUQLP2GiyGbe/uYDh5slJ1Oa7fidJ8vr9D009Mfv6gEmPWfh2OZbt+wJhWRYULez4f3CDMIIeoVrtJRS5T6rt+L0nw+v0PQx7Uqv1g/WpTHA06h3MRxK5o6Fkuuxi9DdhKJG6JuQLV84xQRosATZVxgKWmqyksmib9jJZdiDRze2QT0Htz24YpO+B/iqgqAcDIb9IglZj0lze4fF6R/Lz9Fv0fuURLFca5+X07QdKDeWgxwIy93dEtBDEpjqrVrirDcENx0E0MIzForRYPZmysH4nmx6w41LwIKeguFxbHMIfKNZ32Jomru95yuN2g3P4t6bBgHehXr+40EObTQsNpY7nc50/HPzPz32+D8yw5FRRpa6T0ZdlnceyuPBLaLyIfSsSza6wGDdNotBHl8WfDDM2b7lnnh9nsq3GvnnOsMmUZVmXJyh6ylKx+6OFYWTAfBl6IdWayrmq73mKSDDxA8F8Eu9jX/DShi8D50QRaETCTyQBr4y9l2kCXE3Oz4nSJ0KPSH+mn6CU3t8Fl+vzsfo/l/aJ9szeF5P6mJVjJiAuKqmmu08syiZbmtqIK8K/vst4Xw9J7BH5RcA2Nj0n46fAEvniy69Z164g6IBAvwnsfO0/qUdB2HS8X6mQ8dEHLNpNYz+ngqNGyiBiLsDswY5blxtKvMZuArT+Hpi5jiVN23zBYD6JFQCOzMtEyn9Nuw/RG6miwaIoNAvAlHe71R2/1z2hZ2hbLDlWlQ2Wuw/EB+1J7Mc2BQMwU4fqUB37guWl4v1A0wLhOSo+8ErIk0ueIE14RwXKzcFK5WAjC55VO3G8VOeP+pTW5/ilynlp79YleMslXH+T2pB5QO/AX6fzesx4xJvs4G5R7ksqetTdGK3m2G1ch3+Zlj5EsWm3vfmaHw68MHCxVcQNQdV6wIWhBUTReXUjWPdISOohdMNEhktcStxs0ktTpHiwaQY7TZ8JOtbWan+LZgRzBh8ZlYHJp2WhFyMpbOIXA1+eVHe3X7Tenic0KX/dgdfxQe58H/UAjkVUoeirVLiK026uXeNG/Zo+OTzA0dXk0nhK4yoENBlfT0Oykojsxu2OTuUn5WUE8B9JU3TfmH8miDlHf+OTRDhl/Y0WvnmZYVq3s+pNOj32IQbkr+5URYfxgvpNU/rgihofOWx03SkB5h1kzEHc3+gSCXlgCk9GDgdYNu8IpgaUd+4JRB1JrYdD+Xhnv5E1E/J7TRD8HGH1Ig7Lxc3Y+LnvqLmkzwEANu2llWG/WDdijF9SJllABnCBnssHWDgLBXwjM0xU+E0CeXDxmfT67GMhXTrNoQC5mADpK25K23+0deD7ZcNTS9HMMu6MVvFLdoMeYuAcqmXj1coTxd22WZafA4aBjap+17OQ3oA6vMplrW3pHjpJ44gB0ij9z0n2mdoG8pjUjxQ25pdE1f8Ac1vJNFRUrSE/MONBxzEnsa8oOOjaw7h/t7smihkbdZQL2/eCvl1nwHMEVfAnhvGbAyt5falKK2ONdA6/mOjbn4RmjolHjA6LRul62DVvzfvPl4NJ1L/NNUEodewympi+pKPZKEMoABXgQV2hgFl9tF5g/SgkOL6X5iOhGGGFrF60yf1GMsouZxPVa8xLeVhor78dBvITUjIVW5b/APF3/8QALBAAAQIEBAYCAwEBAQAAAAAAAQARITFBURBhcYEgkaGxwfBQ0TBA4fGQoP/aAAgBAQABPxD/ALfTGPnigKVwFWlNjZmLp2vyPGATfNTQYnaKZnBTqnyfPHMpoWHexAc+AI6P8pEEgFUIAw1ggFzEU+HWYbciKI/1iBBOjZSJ8054yEVEoO0mXnNCZC8gfktVewzoh1p/rwPudHAEgHK03Ih8vvgCHWjXmH0gDXcJ/IGGQACDdrPZDyUiLHQtFktALrHTBk2LzB0gAgOzCewquVINIuoaISwKeqGRGa6jDA2Px5W4KKKP9T3MK59VBnsSU5MIcAnCAajI3s4e4lAAqUjGiFfVwnwR1ZzlYKOAID10XvdEMETCQFyxLvsZFaEuSURkXLFig5BM8KkPj8+ENl63AQep4P8ANyYM1MQ9fM5onRbALmgI5fTNMCixmhokYxAiAaiAG7wo5egzYo0wb3AzFx8e1qLHImBYxdllQlZNgtkJgPU1Ipz8d0PXPUVycIp8AY2Jy/irfYDRx10STwT9bBatbhRIDY/RPiBRozfRBND5By+oR4Fyp+00tkATqCfV8c0DDOAgDG6ZYQ43jTAIFe0AEMlqVBRMYgVY4Ux9KJlcoOsWPdD454ZqSz6+ZyQ1dqB8BBIGcZQ04T/1CANozrgESFX3aIkYoyOAJ6NdoH2ooaWpawL2aKQt1gCrwI+OoTTQwOn5qftSE37g/SOleNZQK1wMDlCs8VnCc/QETKLIqndACFF/qvpGqG1NjciDptUyXMSFCaHnBgHBWqZMcoNsqKib7o8CCIWes9EnRzPZuX+wRs6uvxhNflMuSmo3f906qp8vhhQQ/oIgvLAphR0QFBILpmqyMgoglpCP6FMIR4mawGSbr+N5YbskUgjCY19BWS/CYM6vF3MmihQY3GqH7nVVN/XjwyUNptcp8fxNhzUUXjIZkGYzCYI6dOdnwg+oCGXp6B/lMNnEAGXN2kDQjNTxzcKt1LXuqULLt+GfYgjMfNQBnuVRPD9YyujJA73kN7YLfOFcoDcrSMwOgw6p2R8l34mFjBeNFRe/uvX3TruBBo7APK2oofhqoBboYDFWpIiHwJUGbzJsM0Wo6Hnr5BT7k424i1CSra7Wx653onzuMoup917e6Ethv+GWMZ5hwARor4BhWMgy9AIN6FlZhQJ00WmXCNLoiIaZ3RPa2PUe9G2fxgXU+67FmozAzxIl8JvofFtKVmdEMkKLjQKNQoxQmQrmgjC5dGZyE0yLg2UCUZoi/g5k9lFWbK41PNFNaaBvZQ3PYEpBDQoXiqdsiL1EwA4OOfhUtUXWTX0/UuuwsQSCcPkYEHlR8E6oN1SOh3MeDqPet6P8Dq/dTvuoydBZEBMK53MTRAOUiJaQCdIQDI7PNO6AsZBGVynz/cVUGB6F9pWEydO6GyE+EJkyuBsqTVnvEopskCDIaBO4Jlc3MUCssVGKfZgTGmMsQBQwjZxAYQ/UeaSBAdAj1FiAlc1e43UQg54B/EwiDioMer9kF3IocWJxYgybNOnQyK6r3XdQx1TALCA1g+aCKrSOWZXhoP8A1OGlzKIqgx5pkHJtGEgnWy8QlOaIBrJ1Va+5H9KPAFBySPcpJvklOIFV6tzvCgBISMsAJqtToz8gwpFOoeIIqbMo3BQ3tUU1TQ8gf0ngpCxB1C9LJA7KM0CoXa3mh5Wp6EN1sqIKM3EQHDqmFAPS3fAxmKic8ap8b3uXtQ815poCG4gDVUh8guaJ0F7dpYKC9AURz1Q7QIeSCSz2+Yp0oVEeg3ZdIrIZ9kNrbX23D/UHQIUkgIWkD9EZKUZiMqhHRO7oopLnyQ7rUDkKNRhWIW9VzIwRbtA5FeBLZUdfyYEJgjJE2jCNh9oAQfpBOHUBcboE9lsQuMsGlInA0A4RAQpMC9KKiH4ahXQrqnLtrV05hAUhw+7mvQ2KeOa6Ed0MpKEaPthSDKbU7rmChoMtNfGoIX1SfpthMkRbRQHaEWenV0k0PQLTIB64TTSmSKmzL5ikNkShkhghcbKGuVtRdEErA6NlzlDiVVbHCOJTRTQZ6rNr3fRMtwpLx+oQ4UX+J0B5wG4SqDrUmjcf5Aup7HJUU/xYL0ixT9vwdFIkBVKuvY2Vd8bhhTlpo/8AiNVbtwTsgyRQcdgQdFayREgrbtWLrvYVUmJBTAGjYMRBzchBTjiBZdgFFftGd7Ld9NlOAA0zZKVmLJnkTsGb02EAFCni5jqxZ+cgEOq8FX9SRRwH6A8hNCi4xaHBpI2C99hZxXMD/e6n53YHUphpL4XcA48YM8iB7BD+tKHUSMCEOpUY9uCeVCCYLCVd0MlS8kcK43SBSmdJm3KNkQDmSY8SYoZKiu5uShjcw5ooqm2iBGJPoROPRHIGkxyskICbiOMdaEIcy1UCmCeuQPqKl+pNRqjc4TA4RYHbHIoaR2IZ1Lb3lQeMlCK4oEJn/IDG5BhGWT4LnTAHNygmjxemW+6+te6g5oLVJqv1WO5DXDfhl0chOg09OMybtyTouvxFELeDBMIwxcvNHEDe8GMIfssgDy4TvLO8F7wvMq5wvelhovep3Qv0jN10/wBeEEoxHKiSWCcio7/ZCUAKEDspmRQAgiQLugj8gwaDF0FAcQ1B6mRKSaK0ESwlWzMijAmXhMyYREixhoFZJH6kUtrSmhiJRnEjIAXTE0DGJPZNsLfxdAGaGo90U10LJ4y7AIhQ45YakXVk4IkzSS3xBbMwd9D+8/G/CAeVgR0IHIMzqZBfUDhAvbtYoMNJpFkwpFs55C/pRIEZfEHSoTXlSINyaAE8ifhmmCPTggLl3jBFLJQ80IN87q89XCNEyVxwjWaSY912oQIvQNPw1QQ7iNu3veKFN1E0nX4oi2lfgXdMuoGVgKYE0HZCDkU5F2HhNWaaz4MRCoQme+oJmc4EPVTzaJlwSJsJMdU6O2Pg9yAYKoPYBkuoZbZkcqBdbfV8MFH3x5kZmAV11toPqoU/MVwMzUlRBza8Tqay78TNSFyUhIyMkStzH0nNKxRjMCktksEkAKP8U81LAoI4sAoLRap1BZJ+SdPiNGK7tokKCrEnGFnP/i7/AP/+AAMA/9k=" alt="Franco's House Cleaning" onerror="this.style.display='none'">
+  </div>
+  <nav class="header-nav">
+    <a href="#servicios">Services</a>
+    <a href="#testimonios">Testimonials</a>
+    <a href="#areas">Service Areas</a>
+    <a href="#proceso">How It Works</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-logo">
+    <img src="logo/logo.png" alt="Franco's House Cleaning">
+  </div>
+  <a href="#servicios" onclick="toggleMenu()">
+    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    Services
+  </a>
+  <a href="#testimonios" onclick="toggleMenu()">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Testimonials
+  </a>
+  <a href="#areas" onclick="toggleMenu()">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Service Areas
+  </a>
+  <a href="#proceso" onclick="toggleMenu()">
+    <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+    How It Works
+  </a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="inicio">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="videos/VID-20260201-WA0043.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <!-- Floating sparkles -->
+  <div class="hero-particles" id="particles"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="star">★</span> 4.9/5 — Over 500 Happy Homes Across DFW
+    </div>
+    <h1 class="hero-title">Your Home Deserves<br>to <em>Shine</em></h1>
+    <div class="hero-trust">
+      <span class="hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Background-Checked Staff
+      </span>
+      <span class="hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Eco-Friendly Products
+      </span>
+      <span class="hero-trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Satisfaction Guaranteed
+      </span>
+    </div>
+  </div>
+
+  <a href="#propuesta" class="hero-scroll">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
+</section>
+
+<!-- ═══════════ VALUE PROPOSITION ═══════════ -->
+<section class="section values-section" id="propuesta">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Why Choose Us?</span>
+      <h2 class="section-title">The <em>Franco's</em> Difference</h2>
+      <p class="section-subtitle">We don't just clean. We create spaces where DFW families feel safe, comfortable, and happy.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal delay-1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Vetted & Trusted Staff</h3>
+        <p>Every team member undergoes rigorous background checks and ongoing professional training for your peace of mind.</p>
+      </div>
+      <div class="value-card reveal delay-2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Eco-Friendly Products</h3>
+        <p>We use products that are safe for your family, pets, and the environment. No harsh chemicals, just spotless results.</p>
+      </div>
+      <div class="value-card reveal delay-3">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Obsessive Attention to Detail</h3>
+        <p>We don't just clean, we transform your space. Every corner matters, every surface shines. That's our promise.</p>
+      </div>
+    </div>
+
+    <!-- Stats counter -->
+    <div class="stats-row reveal">
+      <div class="stat-item">
+        <div class="stat-number" data-count="500">0</div>
+        <div class="stat-label">Happy Homes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="98">0</div>
+        <div class="stat-label">% Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="5">0</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="15">0</div>
+        <div class="stat-label">Expert Professionals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section class="section services-section" id="servicios">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-title">Cleaning Solutions <em>For Every Need</em></h2>
+      <p class="section-subtitle">From weekly maintenance to complete transformations across the Dallas-Fort Worth metroplex.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal-scale delay-1">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Recurring Cleaning" loading="lazy">
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <span class="service-tag">Most Popular</span>
+          <h3>Recurring Cleaning</h3>
+          <p>Weekly, biweekly, or monthly. Keep your home always perfect without lifting a finger.</p>
+          <a href="#contacto" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal-scale delay-2">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" alt="Deep Cleaning" loading="lazy">
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <span class="service-tag">Total Transformation</span>
+          <h3>Deep Cleaning</h3>
+          <p>A complete transformation. Perfect for those cleanings that have been waiting far too long.</p>
+          <a href="#contacto" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal-scale delay-3">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Move-In/Move-Out Cleaning" loading="lazy">
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <span class="service-tag">Move-In / Move-Out</span>
+          <h3>Moving Day Cleaning</h3>
+          <p>Move into or out of your home with everything spotless. Perfect first impression guaranteed.</p>
+          <a href="#contacto" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal-scale delay-4">
+        <img src="img/Professional_realistic_photograph_of_a_post-constr-1770146056695.png" alt="Post-Construction Cleaning" loading="lazy">
+        <div class="service-overlay"></div>
+        <div class="service-content">
+          <span class="service-tag">Specialized</span>
+          <h3>Post-Construction</h3>
+          <p>We remove dust, debris, and residue so you can enjoy your renovation from day one.</p>
+          <a href="#contacto" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="section testimonials-section" id="testimonios">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">What Our <em>Clients Say</em></h2>
+      <p class="section-subtitle">Over 500 DFW families trust us. These are their stories.</p>
+    </div>
+
+    <div class="testimonials-track-wrapper reveal">
+      <div class="testimonials-track" id="testimonialsTrack">
+        <div class="testimonial-card">
+          <span class="testimonial-quote">"</span>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">Franco's transformed my home. It had never been so clean. They're detail-oriented, punctual, and incredibly friendly. Every visit feels like coming home to a brand new place.</p>
+          <div class="testimonial-author">
+            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah M." loading="lazy">
+            <div>
+              <div class="testimonial-name">Sarah Mitchell</div>
+              <div class="testimonial-location">Highland Park, Dallas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-quote">"</span>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">I've been using the weekly service for 6 months and couldn't be happier. I fully trust their team. They're professional, discreet, and leave everything spotless every single time.</p>
+          <div class="testimonial-author">
+            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="James W." loading="lazy">
+            <div>
+              <div class="testimonial-name">James Walker</div>
+              <div class="testimonial-location">Southlake, Fort Worth</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-quote">"</span>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">The move-out cleaning was flawless. My new tenants were thrilled. 100% recommended. The price was fair and the results exceeded all my expectations.</p>
+          <div class="testimonial-author">
+            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Lisa T." loading="lazy">
+            <div>
+              <div class="testimonial-name">Lisa Thompson</div>
+              <div class="testimonial-location">Frisco, TX</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-quote">"</span>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">I work from home and needed a team I could truly trust. Franco's is exactly that. Professional, respectful of my workspace, and always on time without exception.</p>
+          <div class="testimonial-author">
+            <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="David R." loading="lazy">
+            <div>
+              <div class="testimonial-name">David Rodriguez</div>
+              <div class="testimonial-location">Plano, TX</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-controls">
+      <button onclick="moveTestimonials(-1)" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="testimonials-dots" id="testimonialDots">
+        <span class="active" onclick="goToTestimonial(0)"></span>
+        <span onclick="goToTestimonial(1)"></span>
+      </div>
+      <button onclick="moveTestimonials(1)" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges reveal">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="var(--verde)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <span>Eco-Certified</span>
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="var(--rosa)" stroke="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Licensed & Insured</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<section class="section steps-section" id="proceso">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Simple Process</span>
+      <h2 class="section-title">Getting Started Is <em>This Easy</em></h2>
+      <p class="section-subtitle">In 3 simple steps your home will be shining. No complications.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal-left delay-1">
+        <span class="step-number">01</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Request Your Quote</h3>
+        <p>Fill out our quick form or give us a call. You'll have your personalized estimate in minutes — no obligation.</p>
+      </div>
+      <div class="step-card reveal delay-2">
+        <span class="step-number">02</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>Schedule Your Cleaning</h3>
+        <p>Pick the day and time that works best for you. We adapt to your schedule, not the other way around.</p>
+      </div>
+      <div class="step-card reveal-right delay-3">
+        <span class="step-number">03</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Enjoy Your Home</h3>
+        <p>Relax while our team transforms your space. 100% satisfaction guaranteed or we'll make it right.</p>
+      </div>
+    </div>
+    <div class="steps-cta reveal">
+      <a href="#contacto" class="btn-primary btn-pulse">
+        Book Now
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALLERY ═══════════ -->
+<section class="section gallery-section" id="galeria">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">Results That <em>Speak for Themselves</em></h2>
+    </div>
+    <div class="carousel-container reveal">
+      <!-- Prev Button -->
+      <button class="carousel-btn carousel-btn-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <!-- Carousel Track -->
+      <div class="carousel-track-container">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="img/17 Undeniably Satisfying Before And After Photos Of Cleaning Transformations.jfif" alt="Before and After Transformation">
+            <div class="carousel-slide-overlay"><span>Amazing Transformation</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/35 Satisfying Pics Of Spaces Before And After Being Cleaned.jfif" alt="Before and After Spaces">
+            <div class="carousel-slide-overlay"><span>Satisfying Results</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Hotel Bathroom & Bathtub Cleaner for Commercial Use _ ROG3.jfif" alt="Gleaming bathroom">
+            <div class="carousel-slide-overlay"><span>Gleaming Bathroom</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Come disincrostare il water.jfif" alt="Spotless toilet">
+            <div class="carousel-slide-overlay"><span>Spotless Results</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Any dirty areas of our homes can become extremely clean, it only needs of tlc.jfif" alt="Deep cleaning">
+            <div class="carousel-slide-overlay"><span>Every Detail Matters</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/36 Cleaning Products That Are Basically A Time Machine In A Bottle.jfif" alt="Professional cleaning">
+            <div class="carousel-slide-overlay"><span>Professional Care</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Before and After pictures of an artist….jfif" alt="Artist before after">
+            <div class="carousel-slide-overlay"><span>Artistic Touch</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Difference_____.jfif" alt="The Difference">
+            <div class="carousel-slide-overlay"><span>The Difference</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/Flores y Huertos.jfif" alt="Fresh and clean">
+            <div class="carousel-slide-overlay"><span>Fresh & Clean</span></div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/download (1).jfif" alt="Cleaning results">
+            <div class="carousel-slide-overlay"><span>Sparkling Clean</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Button -->
+      <button class="carousel-btn carousel-btn-next" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <!-- Dots (generated dynamically) -->
+      <div class="carousel-dots"></div>
+
+      <!-- Counter -->
+      <div class="carousel-counter">
+        <span class="current">1</span> / <span class="total">10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ VIDEOS ═══════════ -->
+<section class="section videos-section" id="videos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Behind the Scenes</span>
+      <h2 class="section-title">Watch Us <em>In Action</em></h2>
+      <p class="section-subtitle">See the dedication and care we put into every home we clean.</p>
+    </div>
+    <div class="videos-grid">
+      <div class="video-item reveal-scale delay-1">
+        <video src="videos/VID-20260201-WA0040.mp4" controls preload="metadata" playsinline></video>
+      </div>
+      <div class="video-item reveal-scale delay-2">
+        <video src="videos/VID-20260201-WA0041.mp4" controls preload="metadata" playsinline></video>
+      </div>
+      <div class="video-item reveal-scale delay-3">
+        <video src="videos/VID-20260201-WA0042.mp4" controls preload="metadata" playsinline></video>
+      </div>
+      <div class="video-item reveal-scale delay-4">
+        <video src="videos/VID-20260201-WA0043.mp4" controls preload="metadata" playsinline></video>
+      </div>
+      <div class="video-item reveal-scale delay-5">
+        <video src="videos/VID-20260201-WA0044 (2).mp4" controls preload="metadata" playsinline></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DFW SERVICE AREAS ═══════════ -->
+<section class="section service-areas-section" id="areas">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Service Areas</span>
+      <h2 class="section-title">Proudly Serving the <em>Dallas-Fort Worth</em> Metroplex</h2>
+      <p class="section-subtitle">From downtown Dallas to the suburbs of Fort Worth — we bring the shine to your doorstep.</p>
+    </div>
+    <div class="areas-grid reveal">
+      <div class="area-col">
+        <h3 class="area-heading">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--rosa)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dallas &amp; Surroundings
+        </h3>
+        <ul class="area-list">
+          <li>Highland Park</li>
+          <li>University Park</li>
+          <li>Uptown Dallas</li>
+          <li>Preston Hollow</li>
+          <li>Lake Highlands</li>
+          <li>Lakewood</li>
+          <li>Oak Lawn</li>
+          <li>Deep Ellum</li>
+        </ul>
+      </div>
+      <div class="area-col">
+        <h3 class="area-heading">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--verde-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Fort Worth &amp; West
+        </h3>
+        <ul class="area-list">
+          <li>Fort Worth</li>
+          <li>Southlake</li>
+          <li>Colleyville</li>
+          <li>Keller</li>
+          <li>Grapevine</li>
+          <li>Trophy Club</li>
+          <li>Westlake</li>
+          <li>Bedford</li>
+        </ul>
+      </div>
+      <div class="area-col">
+        <h3 class="area-heading">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          North &amp; East DFW
+        </h3>
+        <ul class="area-list">
+          <li>Plano</li>
+          <li>Frisco</li>
+          <li>McKinney</li>
+          <li>Allen</li>
+          <li>Richardson</li>
+          <li>Garland</li>
+          <li>Prosper</li>
+          <li>Celina</li>
+        </ul>
+      </div>
+      <div class="area-col">
+        <h3 class="area-heading">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--rosa-light)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Mid-Cities &amp; South
+        </h3>
+        <ul class="area-list">
+          <li>Arlington</li>
+          <li>Irving</li>
+          <li>Grand Prairie</li>
+          <li>Euless</li>
+          <li>Hurst</li>
+          <li>Mansfield</li>
+          <li>Cedar Hill</li>
+          <li>Flower Mound</li>
+        </ul>
+      </div>
+    </div>
+    <p class="areas-note reveal">Don't see your area? <a href="#contacto">Contact us</a> — we're expanding across the metroplex every month.</p>
+  </div>
+</section>
+
+<!-- ═══════════ PRICING ═══════════ -->
+<section class="section pricing-section" id="precios">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">Transparent Plans, <em>No Surprises</em></h2>
+      <p class="section-subtitle">Every home is unique. Choose the plan that fits your needs and get a personalized quote for your DFW home.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal delay-1">
+        <div class="pricing-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="pricing-name">Basic</div>
+        <div class="pricing-freq">Per visit · Recurring Cleaning</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Common areas & bedrooms</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full bathroom cleaning</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Kitchen & surfaces</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Vacuuming & mopping</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Eco-friendly products</li>
+        </ul>
+        <a href="#contacto" class="btn-outline">Get a Quote</a>
+      </div>
+
+      <div class="pricing-card featured reveal delay-2">
+        <div class="pricing-badge">⭐ Most Popular</div>
+        <div class="pricing-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pricing-name">Deep Clean</div>
+        <div class="pricing-freq">Per session · Deep Cleaning</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Everything in Basic plan</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Inside appliances</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Interior windows</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full sanitization</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Baseboards & trim cleaning</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Space organization</li>
+        </ul>
+        <a href="#contacto" class="btn-solid-rosa">Get a Quote</a>
+      </div>
+
+      <div class="pricing-card reveal delay-3">
+        <div class="pricing-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="pricing-name">Premium</div>
+        <div class="pricing-freq">Per project · Move / Post-Construction</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Complete intensive cleaning</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Debris removal</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Surface polishing</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full window cleaning</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Industrial sanitization</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Satisfaction guarantee</li>
+        </ul>
+        <a href="#contacto" class="btn-outline">Get a Quote</a>
+      </div>
+    </div>
+    <p class="pricing-note reveal">Final pricing depends on your home's size and specific services needed. Request your personalized quote — it's 100% free with no obligation.</p>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="cta-section" id="contacto">
+  <img class="cta-bg" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80" alt="" loading="lazy">
+  <div class="cta-overlay"></div>
+  <div class="cta-content reveal">
+    <h2>Ready to Come Home to a<br>Spotless DFW Home?</h2>
+    <p>Request your free quote today and discover why Dallas-Fort Worth families choose Franco's.</p>
+    <a href="tel:+15551234567" class="btn-cta-white">
+      Get Your Free Quote
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="cta-trust">
+      <span>📞 Response in under 2 hours</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Franco's</div>
+      <p>Dallas-Fort Worth's trusted professional residential cleaning service. Your home deserves to shine, and we make it happen — from Highland Park to Frisco and everywhere in between.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#servicios">Recurring Cleaning</a></li>
+        <li><a href="#servicios">Deep Cleaning</a></li>
+        <li><a href="#servicios">Move-In/Out Cleaning</a></li>
+        <li><a href="#servicios">Post-Construction</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#propuesta">About Us</a></li>
+        <li><a href="#testimonios">Testimonials</a></li>
+        <li><a href="#areas">Service Areas</a></li>
+        <li><a href="#precios">Pricing</a></li>
+        <li><a href="#contacto">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+1 (555) 123-4567</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>info@francoscleaning.com</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Mon-Sat: 7:00 AM - 7:00 PM</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 <span>Franco's House Cleaning</span> — Serving the Dallas-Fort Worth Metroplex with pride.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ WHATSAPP FLOAT ═══════════ -->
+<a href="https://wa.me/15551234567?text=Hi%2C%20I%27m%20interested%20in%20a%20quote" target="_blank" class="whatsapp-float" aria-label="Contact via WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="whatsapp-tooltip">Questions? Message us</span>
+</a>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+// ─── Header Scroll Effect ───
+const header = document.getElementById('header');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  if (st > 60) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  lastScroll = st;
+}, { passive: true });
+
+// ─── Mobile Menu ───
+function toggleMenu() {
+  const ham = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  ham.classList.toggle('active');
+  menu.classList.toggle('active');
+  document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+}
+
+// ─── Intersection Observer for Scroll Animations ───
+const observerOptions = {
+  threshold: 0.12,
+  rootMargin: '0px 0px -40px 0px'
+};
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Counter animation
+      if (entry.target.querySelector('.stat-number')) {
+        entry.target.querySelectorAll('.stat-number').forEach(counter => {
+          animateCounter(counter);
+        });
+      }
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// ─── Counter Animation ───
+function animateCounter(el) {
+  const target = parseInt(el.dataset.count);
+  const duration = 2000;
+  const start = performance.now();
+  const step = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target) + (target === 98 ? '%' : '+');
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+// ─── Testimonials Carousel ───
+let testimonialIndex = 0;
+const track = document.getElementById('testimonialsTrack');
+const dots = document.querySelectorAll('#testimonialDots span');
+
+function getCardsPerView() {
+  if (window.innerWidth <= 900) return 1;
+  return 3;
+}
+
+function moveTestimonials(dir) {
+  const cards = track.children.length;
+  const perView = getCardsPerView();
+  const maxIndex = Math.max(0, cards - perView);
+  testimonialIndex = Math.max(0, Math.min(testimonialIndex + dir, maxIndex));
+  updateCarousel();
+}
+
+function goToTestimonial(i) {
+  testimonialIndex = i;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  const card = track.children[0];
+  const gap = 24;
+  const cardW = card.offsetWidth + gap;
+  track.style.transform = `translateX(-${testimonialIndex * cardW}px)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === testimonialIndex));
+}
+
+// Auto-play carousel
+setInterval(() => {
+  const cards = track.children.length;
+  const perView = getCardsPerView();
+  const maxIndex = Math.max(0, cards - perView);
+  testimonialIndex = testimonialIndex >= maxIndex ? 0 : testimonialIndex + 1;
+  updateCarousel();
+}, 5000);
+
+window.addEventListener('resize', updateCarousel);
+
+// ─── Hero Sparkle Particles ───
+const particlesEl = document.getElementById('particles');
+function createSparkle() {
+  const s = document.createElement('div');
+  s.classList.add('sparkle');
+  s.style.left = Math.random() * 100 + '%';
+  s.style.animationDuration = (4 + Math.random() * 6) + 's';
+  s.style.animationDelay = Math.random() * 3 + 's';
+  s.style.width = s.style.height = (2 + Math.random() * 4) + 'px';
+  particlesEl.appendChild(s);
+  setTimeout(() => s.remove(), 12000);
+}
+for (let i = 0; i < 20; i++) createSparkle();
+setInterval(createSparkle, 800);
+
+// ─── Cursor Glow (desktop) ───
+if (window.matchMedia('(pointer: fine)').matches) {
+  const glow = document.getElementById('cursorGlow');
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    glow.style.left = mouseX + 'px';
+    glow.style.top = mouseY + 'px';
+    if (!glow.classList.contains('active')) glow.classList.add('active');
+  });
+}
+
+// ─── Smooth Scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// ─── Parallax on CTA section ───
+window.addEventListener('scroll', () => {
+  const cta = document.querySelector('.cta-section');
+  if (!cta) return;
+  const rect = cta.getBoundingClientRect();
+  const bg = cta.querySelector('.cta-bg');
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    const speed = 0.3;
+    const yPos = (rect.top - window.innerHeight) * speed;
+    bg.style.transform = `translateY(${yPos}px) scale(1.15)`;
+  }
+}, { passive: true });
+
+// ─── Gallery Carousel ───
+(function() {
+  const carouselTrack = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-btn-prev');
+  const nextBtn = document.querySelector('.carousel-btn-next');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  const counterCurrent = document.querySelector('.carousel-counter .current');
+  const counterTotal = document.querySelector('.carousel-counter .total');
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+  let autoPlayInterval;
+
+  // Update total counter
+  counterTotal.textContent = totalSlides;
+
+  // Generate dots dynamically
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.dataset.index = i;
+    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+    dot.addEventListener('click', () => {
+      stopAutoPlay();
+      goToSlide(i);
+      startAutoPlay();
+    });
+    dotsContainer.appendChild(dot);
+  }
+
+  const dots = document.querySelectorAll('.carousel-dot');
+
+  function updateCarousel() {
+    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+    counterCurrent.textContent = currentSlide + 1;
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayInterval = setInterval(nextSlide, 4000);
+  }
+
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+
+  // Event Listeners
+  prevBtn.addEventListener('click', () => { stopAutoPlay(); prevSlide(); startAutoPlay(); });
+  nextBtn.addEventListener('click', () => { stopAutoPlay(); nextSlide(); startAutoPlay(); });
+
+  // Touch/Swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const trackContainer = document.querySelector('.carousel-track-container');
+
+  trackContainer.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoPlay();
+  }, { passive: true });
+
+  trackContainer.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) nextSlide();
+      else prevSlide();
+    }
+    startAutoPlay();
+  }, { passive: true });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { stopAutoPlay(); prevSlide(); startAutoPlay(); }
+    if (e.key === 'ArrowRight') { stopAutoPlay(); nextSlide(); startAutoPlay(); }
+  });
+
+  // Pause on hover
+  const carouselContainer = document.querySelector('.carousel-container');
+  carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+  carouselContainer.addEventListener('mouseleave', startAutoPlay);
+
+  // Start autoplay
+  startAutoPlay();
+})();
+</script>
+</body>
+</html>
